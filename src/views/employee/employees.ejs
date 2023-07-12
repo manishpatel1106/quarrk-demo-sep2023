@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    </head>
+
+    <body>
+        <%- include('../partials/navigation') %>
+            <h1>Employees List!!</h1>
+            <main>
+                <% if(employees.length> 0) { %>
+                    <h1> Employees Found.</h1>
+                    <div>
+                        <% for(let employee of employees) { %>
+                            <span>
+                                <%= employee.firstName %>
+                            </span>
+                            <%}%>
+                    </div>
+
+                    <% } else { %>
+                        <h1>No Employees Found.</h1>
+                        <% } %>
+                            <a href="add-employee">Add Employee</a>
+
+            </main>
+
+
+            <%- include('../partials/footer') %>

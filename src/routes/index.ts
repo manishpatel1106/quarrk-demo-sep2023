@@ -1,5 +1,9 @@
 import * as express from "express";
-export const register = (app: express.Application) => {
+import { EmployeeController } from '../controllers/EmployeeController';
+import * as bodyParser from 'body-parser';
+
+export const registerRoute = (app: express.Application) => {
+    let employeecontroller = new EmployeeController();
     // home page    
     app.get("/", (req: any, res) => {
         res.render("index");
@@ -17,4 +21,18 @@ export const register = (app: express.Application) => {
     app.get("/signup", (req: any, res) => {
         res.render("auth/signup");
     });
+    // app.get("/employees", (req: any, res) => {
+    //     res.render("employee/employees");
+    // });
+    app.get("/add-employee", (req: any, res) => {
+        res.render("employee/add-employee");
+    });
+
+    // app.get("/edit-employee", (req: any, res) => {
+    //     res.render("employee/edit-employee");
+    // });
+
+    app.get("/employees", employeecontroller.getAllEmployees);
+    app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
+
 };
