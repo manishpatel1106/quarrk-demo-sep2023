@@ -2,7 +2,8 @@ import path from "path";
 import fs from "fs";
 
 const dataFilePath = path.join(
-    path.dirname(require.main.filename),
+    process.cwd(),
+    'src',
     'data',
     'employees.json');
 
