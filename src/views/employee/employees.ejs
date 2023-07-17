@@ -3,23 +3,47 @@
 
     <body>
         <%- include('../partials/navigation') %>
-            <h1>Employees List!!</h1>
+            <h1 class="header">Employees Details!!</h1>
+            <a class = "button" href="add-employee">Add Employee</a>
             <main>
-                <% if(employees.length> 0) { %>
-                    <h1> Employees Found.</h1>
-                    <div>
+                <% if(employees.length > 0) { %>
+                    <!-- <h1> Employees Found.</h1> -->
+                    <!-- <div> -->
+                    <div class="gradient-cards">
                         <% for(let employee of employees) { %>
-                            <span>
+                            <!-- <span>
                                 <%= employee.firstName %>
-                            </span>
+                            </span> -->
+                            <div class="card" >
+                              <div style="height: 96px;overflow: hidden"><img src="<%= employee.filePath %>" alt="Avatar" style="max-width:37%;margin-left: 65px;">
+                              </div>
+                              <div style="margin-left: 186px;">
+                                <a href="add-employee"><img style="max-width:30%;" src="edit.png"></a>
+                                <a href="add-employee"><img style="max-width:30%;margin-left: 10px;" src="View-Details.png"></a>
+                               </div>
+                              <div class="container">
+                                <p class="fontsize"><b>Employee ID:-</b> <%= employee.phoneNumber %></p>
+                                <p class="fontsize"><b>First Name:-</b> <%= employee.firstName %></p>
+                                <p class="fontsize"><b>Last Name:-</b> <%= employee.lastName %></p>
+                                <p class="fontsize"><b>Joining Date:-</b> <%= employee.birthDay %></p>
+                              </div>
+                            </div>
                             <%}%>
                     </div>
-
+                    <!-- pagination elements -->
+        <div class="pagination_section">
+            <a href="#"><< Previous </a>
+            <a href="#" title="1" class="active">1</a>
+            <a href="#" title="2">2</a>
+            <a href="#" title="3">3</a>
+            <a href="#" title="4" >4</a>
+            <a href="#" title="5">5</a>
+            <a href="#">  Next >> </a>
+        </div>
                     <% } else { %>
                         <h1>No Employees Found.</h1>
                         <% } %>
-                            <a href="add-employee">Add Employee</a>
-
+                            
             </main>
 
 

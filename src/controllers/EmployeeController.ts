@@ -13,7 +13,7 @@ export class EmployeeController {
             response.render(
                 "employee/employees",
                 { employees: employees }
-            );
+            )
         });
     }
 
