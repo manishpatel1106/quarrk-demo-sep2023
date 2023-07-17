@@ -1,1 +1,55 @@
-[{"firstname":"lalit"},{"firstName":"manish","lastName":"patel","email":"a@a.com","address":"navi mumbai                        ","birthDay":"1989-11-11","phoneNumber":"232434","filePath":"src\\images\\Screenshot 2023-04-10 185054.png"},{"firstName":"lalit ","lastName":"patel","email":"a@c.com","address":"                       pune ","birthDay":"1956-05-07","phoneNumber":"323232323","filePath":"src\\images\\Screenshot 2023-04-18 204005.png"}]
+[
+    {
+        "firstname": "lalit"
+    },
+    {
+        "firstName": "manish",
+        "lastName": "patel",
+        "email": "a@a.com",
+        "address": "navi mumbai                        ",
+        "birthDay": "1989-11-11",
+        "phoneNumber": "232434",
+        "filePath": "src\\images\\Screenshot 2023-04-10 185054.png"
+    },
+    {
+        "firstName": "lalit ",
+        "lastName": "patel",
+        "email": "a@c.com",
+        "address": "                       pune ",
+        "birthDay": "1956-05-07",
+        "phoneNumber": "323232323",
+        "filePath": "src\\images\\Screenshot 2023-04-18 204005.png"
+    },
+    {
+        "firstName": "AJnkya",
+        "lastName": "P",
+        "email": "aj@gmail.com",
+        "address": "Mumbai",
+        "birthDay": "1988-12-10",
+        "phoneNumber": "4569878",
+        "filePath": "src\\images\\Screenshot 2023-04-10 185054.png",
+        "fileName": "Screenshot 2023-04-10 185054.png"
+    },
+    {
+        "employeeNumber": 1,
+        "firstName": "aa",
+        "lastName": "sdsd",
+        "email": "a@a.com",
+        "address": "                        ",
+        "birthDay": "",
+        "phoneNumber": "",
+        "filePath": "src\\images\\Screenshot 2023-04-10 185514.png",
+        "fileName": "Screenshot 2023-04-10 185514.png"
+    },
+    {
+        "firstName": "man",
+        "lastName": "p",
+        "email": "a@a.com",
+        "address": "navi mumbai                        ",
+        "birthDay": "1956-05-10",
+        "phoneNumber": "45697",
+        "filePath": "src\\images\\Screenshot 2023-04-03 164913.png",
+        "fileName": "Screenshot 2023-04-03 164913.png",
+        "employeeNumber": 6
+    }
+]

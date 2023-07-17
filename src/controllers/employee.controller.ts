@@ -1,5 +1,5 @@
 import express from "express";
-import { EmployeeModel } from '../models/EmployeeModel';
+import { EmployeeModel } from '../models/employee.model';
 
 let employeemodel = new EmployeeModel();
 export class EmployeeController {
@@ -18,18 +18,17 @@ export class EmployeeController {
     }
 
     addEmployee = (request: express.Request, response: express.Response) => {
-        let employee = new EmployeeModel();
-        let test = request.body.email;
-        //console.log(request);
-        employee.firstName = request.body.firstName;
-        employee.lastName = request.body.lastName;
-        employee.email = request.body.email;
-        employee.address = request.body.address;
-        employee.birthDay = request.body.birthDay;
-        employee.phoneNumber = request.body.phoneNumber;
-        employee.filePath = request.file.path;
+        const employee: Employee = {
+            firstName: request.body.firstName,
+            lastName: request.body.lastName,
+            email: request.body.email,
+            address: request.body.address,
+            birthDay: request.body.birthDay,
+            phoneNumber: request.body.phoneNumber,
+            filePath: request.file.path,
+            fileName: request.file.filename
+        };
         employeemodel.saveEmployee(employee);
-        //console.log(employee);
         response.redirect('/employees');
     }
 }

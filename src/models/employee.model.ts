@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 
+
 const dataFilePath = path.join(
     process.cwd(),
     'src',
@@ -8,19 +9,14 @@ const dataFilePath = path.join(
     'employees.json');
 
 export class EmployeeModel {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    birthDay: string;
-    address: string;
-    filePath: string;
 
     constructor() { }
 
     // add employees from database
-    saveEmployee(employee: EmployeeModel) {
+    saveEmployee(employee: Employee) {
         this.getAllEmployees(employees => {
+            // set employee number
+            employee.employeeNumber = employees.length + 1;
             employees.push(employee);
             fs.writeFile(dataFilePath, JSON.stringify(employees), err => {
                 console.log(err);
@@ -30,7 +26,7 @@ export class EmployeeModel {
     }
 
     // get all employees from database
-    getAllEmployees(callback: ([]: EmployeeModel[]) => void) {
+    getAllEmployees(callback: ([]: Employee[]) => void) {
         fs.readFile(dataFilePath, (err, fileContent) => {
             if (err) {
                 return callback([]);

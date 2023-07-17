@@ -1,5 +1,5 @@
 import * as express from "express";
-import { EmployeeController } from '../controllers/EmployeeController';
+import { EmployeeController } from '../controllers/employee.controller';
 import * as bodyParser from 'body-parser';
 
 export const registerRoute = (app: express.Application) => {
