@@ -14,7 +14,7 @@ export class EmployeeController {
                 "employee/employees",
                 { employees: employees }
             )
-        });
+        })
     }
 
     addEmployee = (request: express.Request, response: express.Response) => {
