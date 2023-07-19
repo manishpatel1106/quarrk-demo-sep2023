@@ -24,7 +24,8 @@ export class EmployeeController {
                 hasPreviousPage: page > 1,
                 nextPage: page + 1,
                 previousPage: page - 1,
-                lastPage: Math.ceil(totalEmployees / ITEMS_PER_PAGE)
+                lastPage: Math.ceil(totalEmployees / ITEMS_PER_PAGE),
+                totalEmployees: employees.length
             };
 
             response.render(

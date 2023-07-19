@@ -4,5 +4,6 @@ interface IPagination {
     hasPreviousPage: boolean,
     nextPage: number,
     previousPage: number,
-    lastPage: number
+    lastPage: number,
+    totalEmployees: number
 }
