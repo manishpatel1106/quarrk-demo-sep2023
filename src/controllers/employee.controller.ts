@@ -27,8 +27,8 @@ export class EmployeeController {
                 lastPage: Math.ceil(totalEmployees / ITEMS_PER_PAGE),
                 totalEmployees: employees.length
             };
-
             response.render(
+                
                 "employee/employees",
                 {
                     employees: employees.slice(skip, limit),
@@ -40,6 +40,7 @@ export class EmployeeController {
 
     addEmployee = (request: express.Request, response: express.Response) => {
         const employee: Employee = {
+            employeeNumber: request.body.empId,
             firstName: request.body.firstName,
             lastName: request.body.lastName,
             email: request.body.email,
