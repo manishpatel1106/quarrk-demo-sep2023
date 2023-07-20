@@ -53,4 +53,15 @@ export class EmployeeController {
         employeemodel.saveEmployee(employee);
         response.redirect('/employees');
     }
+    deleteEmployee = (employeeNumber: number): boolean => {
+        let employees = employeemodel.readDataFile();
+        const initialLength = employees.length;
+        employees = employees.filter((employee) => employee.employeeNumber !== employeeNumber);
+        if (employees.length < initialLength) {
+            employeemodel.writeDataFile(employees);
+          return true;
+        } else {
+          return false;
+        }
+      };
 }

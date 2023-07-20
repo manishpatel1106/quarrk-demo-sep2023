@@ -34,4 +34,17 @@ export class EmployeeModel {
             return callback(JSON.parse(fileContent.toString()));
         });
     }
+    
+    readDataFile = (): Employee[] => {
+        try {
+          const data = fs.readFileSync(dataFilePath, "utf-8");
+          return JSON.parse(data);
+        } catch (error) {
+          return [];
+        }
+      };
+      // Function to write employees data to the JSON file
+    writeDataFile = (employees: Employee[]): void => {
+    fs.writeFileSync(dataFilePath, JSON.stringify(employees, null, 2), "utf-8");
+  };
 }
