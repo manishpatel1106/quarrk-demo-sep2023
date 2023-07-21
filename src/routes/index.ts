@@ -36,13 +36,6 @@ export const registerRoute = (app: express.Application) => {
     app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
 
     app.post("/employees", (req: Request, res: Response) => {
-    const employeeNumber = parseInt(req.body.employeeNumber);
-    const isDeleted = employeecontroller.deleteEmployee(employeeNumber);
-    if (isDeleted) {
-      res.redirect("/employees"); // Redirect to the employee list after successful deletion
-    } else {
-      res.status(404).send("Employee not found");
-    }
+      employeecontroller.deleteEmployee(req, res);
     });
-  
 };

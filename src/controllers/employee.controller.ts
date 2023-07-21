@@ -53,16 +53,16 @@ export class EmployeeController {
         employeemodel.saveEmployee(employee);
         response.redirect('/employees');
     }
-    
-    deleteEmployee = (employeeNumber: number): boolean => {
+      deleteEmployee(req: express.Request, res: express.Response): void {
+        const employeeNumber = parseInt(req.body.employeeNumber);
         let employees = employeemodel.readDataFile();
         const initialLength = employees.length;
         employees = employees.filter((employee) => employee.employeeNumber !== employeeNumber);
         if (employees.length < initialLength) {
             employeemodel.writeDataFile(employees);
-          return true;
+            res.redirect("/employees");
         } else {
-          return false;
+            res.status(404).send("Employee not found");
         }
-      };
+      }
 }
