@@ -28,7 +28,7 @@ export class EmployeeController {
                 totalEmployees: employees.length
             };
             response.render(
-                
+
                 "employee/employees",
                 {
                     employees: employees.slice(skip, limit),
@@ -53,16 +53,17 @@ export class EmployeeController {
         employeemodel.saveEmployee(employee);
         response.redirect('/employees');
     }
-      deleteEmployee(req: express.Request, res: express.Response): void {
-        const employeeNumber = parseInt(req.body.employeeNumber);
+    
+    deleteEmployee(request: express.Request, response: express.Response): void {
+        const employeeNumber = parseInt(request.body.employeeNumber);
         let employees = employeemodel.readDataFile();
         const initialLength = employees.length;
         employees = employees.filter((employee) => employee.employeeNumber !== employeeNumber);
         if (employees.length < initialLength) {
             employeemodel.writeDataFile(employees);
-            res.redirect("/employees");
+            response.redirect("/employees");
         } else {
-            res.status(404).send("Employee not found");
+            response.status(404).send("Employee not found");
         }
-      }
+    }
 }

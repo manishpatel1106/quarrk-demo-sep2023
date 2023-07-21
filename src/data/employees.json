@@ -625,49 +625,5 @@
     "phoneNumber": "9874562",
     "filePath": "User4.jpg",
     "fileName": "User4.jpg"
-  },
-  {
-    "employeeNumber": 60,
-    "firstName": "user 3",
-    "lastName": "3",
-    "email": "user@3.com",
-    "address": "user 3",
-    "birthDay": "2012-02-03",
-    "phoneNumber": "9874561230",
-    "filePath": "User6.jpg",
-    "fileName": "User6.jpg"
-  },
-  {
-    "employeeNumber": 61,
-    "firstName": "Ajay",
-    "lastName": "Raj",
-    "email": "ajay@aj.com",
-    "address": "he button Element",
-    "birthDay": "2012-12-12",
-    "phoneNumber": "9874561230",
-    "filePath": "User7.jpg",
-    "fileName": "User7.jpg"
-  },
-  {
-    "employeeNumber": 62,
-    "firstName": "T",
-    "lastName": "D",
-    "email": "td@td.com",
-    "address": "Mumbai",
-    "birthDay": "1992-06-03",
-    "phoneNumber": "9874561230",
-    "filePath": "User63.jpg",
-    "fileName": "User63.jpg"
-  },
-  {
-    "employeeNumber": 65,
-    "firstName": "abc",
-    "lastName": "ab",
-    "email": "abc@abc.com",
-    "address": "mumbai                        ",
-    "birthDay": "1920-03-02",
-    "phoneNumber": "9874561230",
-    "filePath": "src\\images\\User2.png",
-    "fileName": "User2.png"
   }
 ]

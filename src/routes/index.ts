@@ -10,10 +10,6 @@ export const registerRoute = (app: express.Application) => {
     });
 
     // about page    
-    app.get("/about", (req: any, res) => {
-        res.render("about");
-    });
-    // about page    
     app.get("/login", (req: any, res) => {
         res.render("auth/login");
     });
@@ -21,21 +17,12 @@ export const registerRoute = (app: express.Application) => {
     app.get("/signup", (req: any, res) => {
         res.render("auth/signup");
     });
-    // app.get("/employees", (req: any, res) => {
-    //     res.render("employee/employees");
-    // });
+
     app.get("/add-employee", (req: any, res) => {
         res.render("employee/add-employee");
     });
 
-    // app.get("/edit-employee", (req: any, res) => {
-    //     res.render("employee/edit-employee");
-    // });
-
     app.get("/employees", employeecontroller.getAllEmployees);
-    app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
-
-    app.post("/employees", (req: Request, res: Response) => {
-      employeecontroller.deleteEmployee(req, res);
-    });
+    app.post("/add-employee", employeecontroller.addEmployee);
+    app.post("/employees", employeecontroller.deleteEmployee);
 };
