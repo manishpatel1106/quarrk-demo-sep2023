@@ -11,28 +11,6 @@
     "fileName": "User2.jpg"
   },
   {
-    "employeeNumber": 3,
-    "firstName": "lalit ",
-    "lastName": "Jay",
-    "email": "a@c.com",
-    "address": "pune ",
-    "birthDay": "1956-05-07",
-    "phoneNumber": "323232323",
-    "filePath": "User3.jpg",
-    "fileName": "User3.jpg"
-  },
-  {
-    "employeeNumber": 3,
-    "firstName": "user",
-    "lastName": "1",
-    "email": "user@u.com",
-    "address": "Test 1",
-    "birthDay": "2012-01-20",
-    "phoneNumber": "9874562",
-    "filePath": "User4.jpg",
-    "fileName": "User4.jpg"
-  },
-  {
     "employeeNumber": 4,
     "firstName": "user2",
     "lastName": "2",
