@@ -1,17 +1,16 @@
 <%- include('../partials/header') %>
-    </head>
+  </head>
 
-    <body>
-        <%- include('../partials/navigation') %>
-            <h1 class="header">Employees Details!!</h1>
-            <a class = "button" href="add-employee">Add Employee</a>
-            <main>
-                <% if(employees.length > 0) { %>
-                    <!-- <h1> Employees Found.</h1> -->
-                    <!-- <div> -->
-                    <div class="gradient-cards">
-                        <% for(let employee of employees) { %>
-                            <!-- <span>
+  <body>
+    <%- include('../partials/navigation') %>
+      <a class="button" href="add-employee">Add Employee</a>
+      <main>
+        <% if(employees.length> 0) { %>
+          <!-- <h1> Employees Found.</h1> -->
+          <!-- <div> -->
+          <div class="gradient-cards">
+            <% for(let employee of employees) { %>
+              <!-- <span>
                                 <%= employee.firstName %>
                             </span> -->
                             <div class="card" >
@@ -29,22 +28,80 @@
                               </div>
                             </div>
                             <%}%>
+              <div class="card">
+                <div style="height: 94px;overflow: hidden"><img src="<%= employee.fileName %>" alt="Avatar"
+                    style="max-width:37%;margin-left: 65px;">
+                </div>
+                <div style="margin-left: 186px;">
+                  <a href="add-employee"><img style="max-width:30%; margin-left: -12px;" src="edit.png"></a>
+                  <a href="add-employee"><img style="max-width:30%; margin-left: 3px;" src="View-Details.png"></a>
+                  <a href="#" onclick="showConfirmationModal('<%= employee.employeeNumber %>')"><img
+                      style="max-width:30%; margin-left: 4px;" src="delete.png"></a>
+
+                  <!-- <form method="POST" action="/delete">
+                                                <input type="hidden" name="email" value="<%= employee.email %>">
+                                                <button class="icon-button" type="submit" onclick="return confirmDelete()">
+                                                  <i class="material-icons">delete</i>
+                                                </button>
+                                              </form> -->
+                </div>
+                <div class="container">
+                  <p class="fontsize"><b>Employee ID:-</b>
+                    <%= employee.employeeNumber %>
+                  </p>
+                  <p class="fontsize"><b>First Name:-</b>
+                    <%= employee.firstName %>
+                  </p>
+                  <p class="fontsize"><b>Last Name:-</b>
+                    <%= employee.lastName %>
+                  </p>
+                  <p class="fontsize"><b>Joining Date:-</b>
+                    <%= employee.birthDay %>
+                  </p>
+                </div>
+              </div>
+              <%}%>
+                <!-- The confirmation modal -->
+                <div id="confirmationModal" class="modal">
+                  <div class="modal-content">
+                    <p>Are you sure you want to delete this employee?</p>
+                    <div class="modal-buttons">
+                      <button class="modal-button" onclick="deleteEmployee()">Delete</button>
+                      <button class="modal-button" onclick="hideConfirmationModal()">Cancel</button>
                     </div>
-                    <!-- pagination elements -->
-        <div class="pagination_section">
-            <a href="#"><< Previous </a>
-            <a href="#" title="1" class="active">1</a>
-            <a href="#" title="2">2</a>
-            <a href="#" title="3">3</a>
-            <a href="#" title="4" >4</a>
-            <a href="#" title="5">5</a>
-            <a href="#">  Next >> </a>
-        </div>
-                    <% } else { %>
-                        <h1>No Employees Found.</h1>
-                        <% } %>
-                            
-            </main>
+                  </div>
+                </div>
+                <form action="/employees" method="post" id="deleteForm">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="employeeNumber" id="deleteEmployeeNumber">
+                </form>
+          </div>
+          <script>
+            // Show the confirmation modal
+            function showConfirmationModal(employeeNumber) {
+              const modal = document.getElementById("confirmationModal");
+              const deleteEmployeeNumber = document.getElementById("deleteEmployeeNumber");
+              deleteEmployeeNumber.value = employeeNumber;
+              modal.style.display = "block";
+            }
 
+            // Hide the confirmation modal
+            function hideConfirmationModal() {
+              const modal = document.getElementById("confirmationModal");
+              modal.style.display = "none";
+            }
 
-            <%- include('../partials/footer') %>
+            // Delete employee
+            function deleteEmployee() {
+              const form = document.getElementById("deleteForm");
+              form.submit();
+            }
+          </script>
+          <!-- pagination elements -->
+          <%- include('../partials/pagination',{pagination: pagination}) %>
+            <% } else { %>
+              <h1>No Employees Found.</h1>
+              <% } %>
+
+      </main>
+      <%- include('../partials/footer') %>
