@@ -2,7 +2,7 @@
   "name": "employee-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "start": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "dev": "node .",

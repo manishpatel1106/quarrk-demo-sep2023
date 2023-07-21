@@ -43,5 +43,6 @@ export const registerRoute = (app: express.Application) => {
     } else {
       res.status(404).send("Employee not found");
     }
-  });
+    });
+  
 };
