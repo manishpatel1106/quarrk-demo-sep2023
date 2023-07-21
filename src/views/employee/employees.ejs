@@ -18,11 +18,11 @@
                               <div style="height: 96px;overflow: hidden"><img src="<%= employee.filePath %>" alt="Avatar" style="max-width:37%;margin-left: 65px;">
                               </div>
                               <div style="margin-left: 186px;">
-                                <a href="add-employee"><img style="max-width:30%;" src="edit.png"></a>
-                                <a href="add-employee"><img style="max-width:30%;margin-left: 10px;" src="View-Details.png"></a>
+                                <a href="edit-employee?employeeNo=<%= employee.employeeNumber %>"><img style="max-width:30%;" src="edit.png"></a>
+                                <a href="edit-employee"><img style="max-width:30%;margin-left: 10px;" src="View-Details.png"></a>
                                </div>
                               <div class="container">
-                                <p class="fontsize"><b>Employee ID:-</b> <%= employee.phoneNumber %></p>
+                                <p class="fontsize"><b>Employee ID:-</b> <%= employee.employeeNumber %></p>
                                 <p class="fontsize"><b>First Name:-</b> <%= employee.firstName %></p>
                                 <p class="fontsize"><b>Last Name:-</b> <%= employee.lastName %></p>
                                 <p class="fontsize"><b>Joining Date:-</b> <%= employee.birthDay %></p>

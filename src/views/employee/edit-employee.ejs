@@ -1,7 +1,51 @@
 <%- include('../partials/header') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/employee.css">
     </head>
 
     <body>
         <%- include('../partials/navigation') %>
-            <h1>Edit Employee!!</h1>
+
+            <main>
+                <form class="employee-form" action="/edit-employee" method="POST" enctype="multipart/form-data">
+                    <div class="form-control">
+                        <h3>Edit Employee</h3> <h3>ID - </h3><h3>ID - <%= selectedEmployee.employeeNumber %></h3>
+                    </div>
+                    <div class="form-control">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" autocomplete="nope" value="<%= selectedEmployee.firstName %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" autocomplete="nope" value="<%= selectedEmployee.lastName %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" autocomplete="nope" id="email" value="<%= selectedEmployee.email %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" name="phoneNumber" autocomplete="nope" id="phoneNumber" value="<%= selectedEmployee.phoneNumber %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="birthDay">Birth Day</label>
+                        <input type="date" name="birthDay" id="birthDay" value="<%= selectedEmployee.birthDay %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="address">Address</label>
+                        <textarea draggable="false" rows="4" cols="50" name="address" id="address" value="<%= selectedEmployee.address %>">
+                        </textarea>
+                    </div>
+                    <div class="form-control">
+                        <label for="image">Upload Image</label>
+                        <input type="file" name="image" id="image">
+                    </div>
+
+                    <button class="btn" type="submit">
+                        Update Employee
+                    </button>
+                </form>
+
+            </main>
+
             <%- include('../partials/footer') %>

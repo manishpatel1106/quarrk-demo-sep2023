@@ -24,15 +24,23 @@ export const registerRoute = (app: express.Application) => {
     // app.get("/employees", (req: any, res) => {
     //     res.render("employee/employees");
     // });
+    app.get("/view-employee", (req: any, res) => {
+        res.render("employee/view-employee");
+    });
+
     app.get("/add-employee", (req: any, res) => {
         res.render("employee/add-employee");
     });
 
-    // app.get("/edit-employee", (req: any, res) => {
-    //     res.render("employee/edit-employee");
-    // });
+    app.get("/edit-employee", (req: any, res) => {
+        const employeeNo = req.query.employeeNo;
+        employeecontroller.getSelectedEmployee(employeeNo,res)
+    });
+   
 
     app.get("/employees", employeecontroller.getAllEmployees);
+    
+    app.post("/edit-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.editEmployee);
     app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
 
 };
