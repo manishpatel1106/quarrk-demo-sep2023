@@ -1,12 +1,24 @@
 import express from "express";
 import { EmployeeModel } from '../models/employee.model';
+import { Departments, Gender, readDataFile, writeDataFile } from '../functions/common.functions';
+
 
 let employeemodel = new EmployeeModel();
-const ITEMS_PER_PAGE: number = 10;
+const ITEMS_PER_PAGE: number = 7;
 export class EmployeeController {
     constructor() {
         employeemodel = new EmployeeModel();
     }
+
+    addNewEmployee = (request: express.Request, response: express.Response) => {
+        response.render(
+            "employee/add-employee",
+            {
+                Departments: Departments,
+                Gender: Gender
+            }
+        )
+    };
 
     getAllEmployees = (request: express.Request, response: express.Response) => {
         var page: number = 1;
@@ -28,7 +40,6 @@ export class EmployeeController {
                 totalEmployees: employees.length
             };
             response.render(
-
                 "employee/employees",
                 {
                     employees: employees.slice(skip, limit),
@@ -48,27 +59,34 @@ export class EmployeeController {
         //         { employee: selectedEmp }
         //     )
 
-        employeemodel.getSelectedEmployee(parseInt(employeeNo) , selectedEmp => {
-            console.log(selectedEmp);
+
+        employeemodel.getSelectedEmployee(parseInt(employeeNo), selectedEmp => {
             response.render(
                 "employee/edit-employee",
-                { selectedEmployee: selectedEmp }
+                { selectedEmployee: selectedEmp, Departments: Departments, Gender: Gender }
             )
         });
     }
 
 
     addEmployee = (request: express.Request, response: express.Response) => {
+        let file_path, file_name = "";
+        if (request.file !== undefined) {
+            file_path = request.file.path;
+            file_name = request.file.filename;
+        }
         const employee: Employee = {
             employeeNumber: request.body.empId,
             firstName: request.body.firstName,
             lastName: request.body.lastName,
             email: request.body.email,
             address: request.body.address,
-            birthDay: request.body.birthDay,
             phoneNumber: request.body.phoneNumber,
-            filePath: request.file.path,
-            fileName: request.file.filename
+            filePath: file_path,
+            fileName: file_name,
+            gender: request.body.gender,
+            joiningDate: request.body.joiningDate,
+            department: request.body.department
         };
         employeemodel.saveEmployee(employee);
         response.redirect('/employees');
@@ -80,22 +98,24 @@ export class EmployeeController {
             lastName: request.body.lastName,
             email: request.body.email,
             address: request.body.address,
-            birthDay: request.body.birthDay,
             phoneNumber: request.body.phoneNumber,
             filePath: request.file.path,
-            fileName: request.file.filename
+            fileName: request.file.filename,
+            gender: request.body.gender,
+            joiningDate: request.body.joiningDate,
+            department: request.body.department
         };
         employeemodel.editEmployee(employee);
         response.redirect('/employees');
     }
-    
+
     deleteEmployee(request: express.Request, response: express.Response): void {
         const employeeNumber = parseInt(request.body.employeeNumber);
-        let employees = employeemodel.readDataFile();
+        let employees = readDataFile();
         const initialLength = employees.length;
         employees = employees.filter((employee) => employee.employeeNumber !== employeeNumber);
         if (employees.length < initialLength) {
-            employeemodel.writeDataFile(employees);
+            writeDataFile(employees);
             response.redirect("/employees");
         } else {
             response.status(404).send("Employee not found");

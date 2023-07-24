@@ -225,7 +225,7 @@ form {
 }
 
 
-
+/*
 .pagination {
     margin-top: 1rem;
     text-align: center;
@@ -245,6 +245,7 @@ form {
     background: #00695c;
     color: white;
 }
+*/
 
 @media (min-width: 768px) {
     .main-header__nav {
@@ -257,46 +258,53 @@ form {
 }
 
 /* Employee Cart Design */
-.header{
-  font-size: 28px;
+.header {
+    font-size: 28px;
     background: blue;
     color: yellow;
 }
-  .card {
+
+.card {
     width: 19.33%;
     border: 0;
     margin-left: -8px;
     margin-top: -9px;
 }
-  .gradient-cards {
+
+.gradient-cards {
     display: flex;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     /* padding: 98px; */
     flex-wrap: wrap;
-  }
-  .container-card {
+}
+
+.container-card {
     position: relative;
     border: 2px solid transparent;
     background-clip: padding-box;
     border-radius: 45px;
     padding: 40px;
     width: 50%;
-  }
-  .fontsize{
+}
+
+.fontsize {
     font-size: 12px;
-  }
-  .grid-container {
+}
+
+.grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #2196F3;
     padding: 10px;
     margin-left: 25px;
-  }
-  .container{
+}
+
+.container {
     margin-left: 35px;
-  }
-  .button {
+}
+
+.button {
     display: block;
     width: 183px;
     height: 34px;
@@ -310,48 +318,48 @@ form {
     margin-top: 10px;
 }
 
-  /* --- */
+/* --- */
 
-  /* header styling */
-  h1 {
+/* header styling */
+h1 {
     color: green;
 }
- 
+
 /* pagination position styling */
 .pagination_section {
     position: relative;
     margin-top: 17px;
     margin-left: 351px;
 }
- 
+
 /* pagination styling */
 .pagination_section a {
     color: black;
     padding: 10px 18px;
     text-decoration: none;
 }
- 
+
 /* pagination hover effect on non-active */
 .pagination_section a:hover:not(.active) {
     background-color: #031F3B;
     color: white;
 }
- 
+
 /* pagination hover effect on active*/
- 
+
 /* a:nth-child(5) {
     background-color: green;
     color: white;
 } */
- 
+
 a:nth-child(1) {
-    font-weight: bold;
+    font-weight: normal;
 }
- 
+
 a:nth-child(7) {
     font-weight: bold;
 }
- 
+
 .content {
     margin: 50px;
     padding: 15px;
@@ -359,17 +367,19 @@ a:nth-child(7) {
     height: 200px;
     border: 2px solid black;
 }
- /* Remove default button styling */
- .icon-button {
+
+/* Remove default button styling */
+.icon-button {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
     color: #00efd1;
     font-size: 24px;
-  }
-  /* Add your CSS styles for the modal */
-  .modal {
+}
+
+/* Add your CSS styles for the modal */
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -378,25 +388,25 @@ a:nth-child(7) {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-  }
+}
 
-  .modal-content {
+.modal-content {
     background-color: #fff;
     border: 1px solid #ccc;
     max-width: 400px;
     margin: 15% auto;
     padding: 20px;
     border-radius: 5px;
-  }
+}
 
-  .modal-buttons {
+.modal-buttons {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
-  }
+}
 
-  .modal-button {
+.modal-button {
     margin-left: 10px;
     padding: 5px 10px;
     cursor: pointer;
-  }
+}

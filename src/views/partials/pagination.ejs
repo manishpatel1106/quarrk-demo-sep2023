@@ -1,5 +1,51 @@
-<div class="pagination">
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="<%= pagination.hasPreviousPage === true ? 'page-item' : 'page-item disabled' %>">
+            <a class="page-link" href="?page=<%= pagination.previousPage %>" tabindex="-1">Previous</a>
+        </li>
+        <% if (pagination.currentPage !==1 && pagination.previousPage !==1) { %>
+            <li class="page-item">
+                <a class="page-link" href="?page=1">1</a>
+            </li>
+            <% } %>
+                <% if (pagination.hasPreviousPage) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<%= pagination.previousPage %>">
+                            <%= pagination.previousPage %>
+                        </a>
+                    </li>
+                    <% } %>
+                        <li class="page-item active">
+                            <a class="page-link" href="?page=<%= pagination.currentPage %>" class="active">
+                                <%= pagination.currentPage %>
+                            </a>
+                        </li>
+                        <% if (pagination.hasNextPage) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<%= pagination.nextPage %>">
+                                    <%= pagination.nextPage %>
+                                </a>
+                            </li>
+                            <% } %>
+                                <% if (pagination.lastPage !==pagination.currentPage && pagination.nextPage
+                                    !==pagination.lastPage) { %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<%= pagination.lastPage %>">
+                                            <%= pagination.lastPage %>
+                                        </a>
+                                    </li>
 
+                                    <% } %>
+
+                                        <li
+                                            class="<%= pagination.hasNextPage === true ? 'page-item' : 'page-item disabled' %>">
+                                            <a class='page-link' href="?page=<%= pagination.nextPage %>">Next</a>
+                                        </li>
+    </ul>
+</nav>
+
+<!-- 
+<div class="pagination">
     <% if (pagination.hasPreviousPage) { %>
         <a href="?page=<%= pagination.previousPage %>">
             << Previous</a>
@@ -36,4 +82,4 @@
                                                                         <a href="#" style="pointer-events: none;">Next
                                                                             >></a>
                                                                         <% } %>
-</div>
+</div> -->

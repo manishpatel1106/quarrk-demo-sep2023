@@ -24,18 +24,16 @@ export const registerRoute = (app: express.Application) => {
         res.render("employee/view-employee");
     });
 
-    app.get("/add-employee", (req: any, res) => {
-        res.render("employee/add-employee");
-    });
+    app.get("/add-employee", employeecontroller.addNewEmployee);
 
     app.get("/edit-employee", (req: any, res) => {
         const employeeNo = req.query.employeeNo;
-        employeecontroller.getSelectedEmployee(employeeNo,res)
+        employeecontroller.getSelectedEmployee(employeeNo, res)
     });
-   
+
 
     app.get("/employees", employeecontroller.getAllEmployees);
-    
+
     app.post("/edit-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.editEmployee);
     app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
 

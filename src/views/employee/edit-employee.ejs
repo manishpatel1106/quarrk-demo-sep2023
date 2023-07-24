@@ -1,50 +1,85 @@
-<%- include('../partials/header') %>
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/employee.css">
+<%- include('../partials/header',{ title: "Edit Employee" }) %>
     </head>
 
     <body>
         <%- include('../partials/navigation') %>
 
             <main>
-                <form class="employee-form" action="/edit-employee" method="POST" enctype="multipart/form-data">
-                    <div class="form-control">
-                        <h3>Edit Employee</h3> <h3>ID - </h3><h3>ID - <%= selectedEmployee.employeeNumber %></h3>
+                <div class="container">
+                    <div class="row justify-content-left m-1">
+                        <h4 class="">Edit Employee</h4>
                     </div>
-                    <div class="form-control">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" autocomplete="nope" value="<%= selectedEmployee.firstName %>">
-                    </div>
-                    <div class="form-control">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" autocomplete="nope" value="<%= selectedEmployee.lastName %>">
-                    </div>
-                    <div class="form-control">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" autocomplete="nope" id="email" value="<%= selectedEmployee.email %>">
-                    </div>
-                    <div class="form-control">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="text" name="phoneNumber" autocomplete="nope" id="phoneNumber" value="<%= selectedEmployee.phoneNumber %>">
-                    </div>
-                    <div class="form-control">
-                        <label for="birthDay">Birth Day</label>
-                        <input type="date" name="birthDay" id="birthDay" value="<%= selectedEmployee.birthDay %>">
-                    </div>
-                    <div class="form-control">
-                        <label for="address">Address</label>
-                        <textarea draggable="false" rows="4" cols="50" name="address" id="address" value="<%= selectedEmployee.address %>">
-                        </textarea>
-                    </div>
-                    <div class="form-control">
-                        <label for="image">Upload Image</label>
-                        <input type="file" name="image" id="image">
-                    </div>
+                    <form action="/edit-employee" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName"
+                                    autocomplete="nope" value="<%= selectedEmployee.firstName %>">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                    autocomplete="nope" value="<%= selectedEmployee.lastName %>">
+                            </div>
+                        </div>
 
-                    <button class="btn" type="submit">
-                        Update Employee
-                    </button>
-                </form>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="department">Department</label>
+                                <select id="department" name="department" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <% for ( var i=0; i < Departments.length; i++ ) { var selected=(
+                                        selectedEmployee.department===Departments[i] ) ? "selected" : "" ; %>
+                                        <option value="<%=Departments[ i ] %>" <%=selected %>><%=Departments[i] %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <% for ( var i=0; i < Gender.length; i++ ) { var selected=(
+                                        selectedEmployee.gender===Gender[i] ) ? "selected" : "" ; %>
+                                        <option value="<%=Gender[ i ] %>" <%=selected %>><%=Gender[i] %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="joiningDate">Joining Date</label>
+                                <input type="date" value="<%= selectedEmployee.joiningDate %>" class="form-control"
+                                    id="joiningDate" name="joiningDate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="<%= selectedEmployee.email %>" autocomplete="nope">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    value="<%= selectedEmployee.phoneNumber %>" autocomplete="nope">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="<%= selectedEmployee.address %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <input class="" type="file" id="image" name="image">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Update Employee</button>
+                    </form>
+                </div>
 
             </main>
 

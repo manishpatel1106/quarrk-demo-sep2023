@@ -4,8 +4,10 @@ interface Employee {
     lastName: string;
     email: string;
     phoneNumber: string;
-    birthDay: string;
+    gender: string;
     address?: string;
     filePath: string;
     fileName: string;
+    joiningDate: string;
+    department: string;
 }
