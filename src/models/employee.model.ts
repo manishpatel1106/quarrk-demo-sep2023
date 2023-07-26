@@ -1,4 +1,4 @@
-import path from "path";
+import path, { parse } from "path";
 import fs from "fs";
 import { dataFilePath } from '../functions/common.functions';
 
@@ -51,6 +51,7 @@ export class EmployeeModel {
                     employees[i].address = updatedEmployee.address;
                     employees[i].email = updatedEmployee.email;
                     employees[i].filePath = updatedEmployee.filePath;
+                    employees[i].fileName = updatedEmployee.fileName;
                     employees[i].phoneNumber = updatedEmployee.phoneNumber;
                     employees[i].gender = updatedEmployee.gender;
                     employees[i].department = updatedEmployee.department;

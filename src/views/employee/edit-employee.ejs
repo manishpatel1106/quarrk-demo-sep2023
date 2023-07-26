@@ -7,7 +7,12 @@
             <main>
                 <div class="container">
                     <div class="row justify-content-left m-1">
-                        <h4 class="">Edit Employee</h4>
+                        <h3 class="">Edit Employee</h3>
+                        
+                    </div>
+                    <div class="row justify-content-left m-1">
+                        <h4> Employee Id : <%= selectedEmployee.employeeNumber %></h4>
+                        
                     </div>
                     <form action="/edit-employee" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
@@ -72,12 +77,19 @@
                                     value="<%= selectedEmployee.address %>">
                             </div>
                         </div>
+                    
                         <div class="form-row">
+                            <% if(selectedEmployee.fileName==="" ) {%>
+                                <img src="<%= selectedEmployee.gender === 'Male' ? 'male' : 'female' %>.png" class="card-image" alt="...">
+                                <%} else {%>
+                                  <img src="<%= selectedEmployee.fileName%>" class="card-image" alt="...">
+                                  <%}%>
                             <div class="form-group col-md-8">
-                                <input class="" type="file" id="image" name="image">
+                                <input class="" type="file" id="image" name="image" style="margin-top: 10px;margin-left: 10px;">
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Update Employee</button>
+                        <input type="hidden" name="empId" id="empId" value="<%= selectedEmployee.employeeNumber %>">
                     </form>
                 </div>
 
