@@ -1,0 +1,38 @@
+<%- include('../partials/header',{ title: "Delete Employee" }) %>
+    </head>
+
+    <body>
+        <%- include('../partials/navigation') %>
+
+            <main>
+                <div class="container">
+                    <h1>Employee Details</h1>
+                    <% if(employee.fileName==="" ) {%>
+                        <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; background-color: #f2f2f2;">
+                            <img src="<%= employee.gender === 'Male' ? 'male' : 'female' %>.png" alt="Circle Image" class="img-fluid" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%;">
+                          </div>
+                        <%} else {%>
+                            <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; background-color: #f2f2f2;">
+                                <img src="<%= employee.fileName %>" alt="Circle Image" class="img-fluid" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%;">
+                              </div>
+                          <%}%>
+                   
+    <p><b>Employee Number:</b> <%= employee.employeeNumber %></p>
+    <p><b>First Name:</b> <%= employee.firstName %></p>
+    <p><b>Last Name:</b> <%= employee.lastName %></p>
+    <p><b>Email:</b> <%= employee.email %></p>
+    <p><b>Phone Number:</b> <%= employee.phoneNumber %></p>
+    <p><b>Gender:</b> <%= employee.gender %></p>
+    <p><b>Address:</b> <%= employee.address %></p>
+    <p><b>File Name:</b> <%= employee.fileName %></p>
+    <p><b>Joining Date:</b> <%= employee.joiningDate %></p>
+    <p><b>Department:</b> <%= employee.department %></p>
+
+    <!-- Delete button with Bootstrap styling -->
+    <form action="/delete/<%= employee.employeeNumber %>" method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+                </div>
+            </main>
+
+            <%- include('../partials/footer') %>

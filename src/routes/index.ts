@@ -40,4 +40,11 @@ export const registerRoute = (app: express.Application) => {
     app.get("/employees", employeecontroller.getAllEmployees);
     app.post("/add-employee", employeecontroller.addEmployee);
     app.post("/employees", employeecontroller.deleteEmployee);
+    app.get("/delete-employee", (req: any, res) => {
+        const employeeNo = req.query.employeeNo;
+        employeecontroller.getSelectedEmployeeForDelete(employeeNo, res)
+    });
+    app.post('/delete/:employeeNumber', (req, res) => {
+    employeecontroller.deleteEmployee(req,res)
+    });
 };

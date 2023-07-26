@@ -67,7 +67,14 @@ export class EmployeeController {
             )
         });
     }
-
+    getSelectedEmployeeForDelete = (employeeNo: string, response: express.Response) => {
+        employeemodel.getSelectedEmployee(parseInt(employeeNo), selectedEmp => {
+            response.render(
+                "employee/delete-employee",
+                { employee: selectedEmp, Departments: Departments, Gender: Gender }
+            )
+        });
+    }
 
     addEmployee = (request: express.Request, response: express.Response) => {
         let file_path, file_name = "";
@@ -110,7 +117,7 @@ export class EmployeeController {
     }
 
     deleteEmployee(request: express.Request, response: express.Response): void {
-        const employeeNumber = parseInt(request.body.employeeNumber);
+        const employeeNumber = parseInt(request.params.employeeNumber);
         let employees = readDataFile();
         const initialLength = employees.length;
         employees = employees.filter((employee) => employee.employeeNumber !== employeeNumber);
