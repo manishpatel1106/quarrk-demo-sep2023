@@ -101,9 +101,15 @@ export class EmployeeController {
 
     editEmployee = (request: express.Request, response: express.Response) => {
         let file_path, file_name = "";
+        
         if (request.file !== undefined) {
             file_path = request.file.path;
             file_name = request.file.filename;
+        }
+        else
+        {
+            file_path = request.body.filePath;
+            file_name = request.body.fileName;
         }
         const employee: Employee = {
             employeeNumber: parseInt(request.body.empId),
