@@ -50,16 +50,6 @@ export class EmployeeController {
     }
 
     getSelectedEmployee = (request: express.Request, response: express.Response) => {
-
-
-        // var selectedEmp = employeemodel.getSelectedEmployee(parseInt(employeeNo));
-        // console.log(selectedEmp);
-        //    response.render(
-        //         "employee/edit-employee",
-        //         { employee: selectedEmp }
-        //     )
-
-        console.log(request.query.employeeNo);
         employeemodel.getSelectedEmployee(parseInt(request.query.employeeNo.toString()), selectedEmp => {
             response.render(
                 "employee/edit-employee",
@@ -67,8 +57,8 @@ export class EmployeeController {
             )
         });
     }
-    getSelectedEmployeeForDelete = (employeeNo: string, response: express.Response) => {
-        employeemodel.getSelectedEmployee(parseInt(employeeNo), selectedEmp => {
+    getSelectedEmployeeForDelete = (request: express.Request, response: express.Response) => {
+        employeemodel.getSelectedEmployee(parseInt(request.query.employeeNo.toString()), selectedEmp => {
             response.render(
                 "employee/delete-employee",
                 { employee: selectedEmp, Departments: Departments, Gender: Gender }
