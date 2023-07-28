@@ -26,25 +26,24 @@ export const registerRoute = (app: express.Application) => {
 
     app.get("/add-employee", employeecontroller.addNewEmployee);
 
-    app.get("/edit-employee", (req: any, res) => {
-        const employeeNo = req.query.employeeNo;
-        employeecontroller.getSelectedEmployee(employeeNo, res)
-    });
+    app.get("/edit-employee", employeecontroller.getSelectedEmployee);
 
 
     app.get("/employees", employeecontroller.getAllEmployees);
 
-    app.post("/edit-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.editEmployee);
-    app.post("/add-employee", bodyParser.urlencoded({ extended: true }), employeecontroller.addEmployee);
+    app.post("/edit-employee", employeecontroller.editEmployee);
+    app.post("/add-employee", employeecontroller.addEmployee);
 
     app.get("/employees", employeecontroller.getAllEmployees);
     app.post("/add-employee", employeecontroller.addEmployee);
     app.post("/employees", employeecontroller.deleteEmployee);
+
     app.get("/delete-employee", (req: any, res) => {
         const employeeNo = req.query.employeeNo;
         employeecontroller.getSelectedEmployeeForDelete(employeeNo, res)
     });
+    
     app.post('/delete/:employeeNumber', (req, res) => {
-    employeecontroller.deleteEmployee(req,res)
+        employeecontroller.deleteEmployee(req, res)
     });
 };

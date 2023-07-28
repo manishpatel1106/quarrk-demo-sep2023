@@ -49,7 +49,7 @@ export class EmployeeController {
         })
     }
 
-    getSelectedEmployee = (employeeNo: string, response: express.Response) => {
+    getSelectedEmployee = (request: express.Request, response: express.Response) => {
 
 
         // var selectedEmp = employeemodel.getSelectedEmployee(parseInt(employeeNo));
@@ -59,8 +59,8 @@ export class EmployeeController {
         //         { employee: selectedEmp }
         //     )
 
-
-        employeemodel.getSelectedEmployee(parseInt(employeeNo), selectedEmp => {
+        console.log(request.query.employeeNo);
+        employeemodel.getSelectedEmployee(parseInt(request.query.employeeNo.toString()), selectedEmp => {
             response.render(
                 "employee/edit-employee",
                 { selectedEmployee: selectedEmp, Departments: Departments, Gender: Gender }
@@ -101,13 +101,12 @@ export class EmployeeController {
 
     editEmployee = (request: express.Request, response: express.Response) => {
         let file_path, file_name = "";
-        
+
         if (request.file !== undefined) {
             file_path = request.file.path;
             file_name = request.file.filename;
         }
-        else
-        {
+        else {
             file_path = request.body.filePath;
             file_name = request.body.fileName;
         }
