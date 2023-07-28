@@ -71,10 +71,7 @@
                     <a href="edit-employee?employeeNo=<%= employee.employeeNumber %>" class="btn btn-info btn-sm">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="#" onclick="showConfirmationModal('<%= employee.employeeNumber %>')"
-                      class="btn btn-info btn-sm">
-                      <i class="fas fa-trash"></i>
-                    </a>
+                    <a href="delete-employee?employeeNo=<%= employee.employeeNumber %>" class="btn btn-info btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
                 <%}%>
