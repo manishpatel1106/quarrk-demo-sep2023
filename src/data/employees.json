@@ -1,1 +1,40 @@
-[{"employeeNumber":2,"firstName":"Mark ","lastName":"Taylor","email":"mark.taylor@arrkgroup.com","address":"navi mumbai","phoneNumber":"02236982365","filePath":"src\\images\\Screenshot 2023-04-03 161712.png","fileName":"Screenshot 2023-04-03 161712.png","gender":"Male","joiningDate":"1956-05-10","department":"Admin"},{"employeeNumber":3,"firstName":"Ross","lastName":"Taylor","email":"ross.taylor@arrkgroup.com","address":"london","phoneNumber":"022698458789","filePath":"src\\images\\Screenshot 2023-04-10 173912.png","fileName":"Screenshot 2023-04-10 173912.png","gender":"Male","joiningDate":"1986-06-02","department":"Admin"},{"employeeNumber":4,"firstName":"Elizabeth","lastName":"Lee","email":"eli.lee@arrkgroup.com","address":"mumbai","phoneNumber":"56983622568","filePath":"src\\images\\Screenshot 2023-04-08 120230.png","fileName":"Screenshot 2023-04-08 120230.png","gender":"Female","joiningDate":"1986-12-12","department":"Accounts"},{"employeeNumber":4,"firstName":"Kevin","lastName":"P","email":"kevin.p@arrkgroup.com","address":"Mumbai","phoneNumber":"9365236988","filePath":"src\\images\\User2.png","fileName":"User2.png","gender":"Male","joiningDate":"1978-02-05","department":"HR"},{"employeeNumber":5,"firstName":"Tom ","lastName":"C","email":"romc@gmail.com","address":"Mumbai","phoneNumber":"9656552212","fileName":"","gender":"Male","joiningDate":"1991-11-12","department":"IT"}]
+[
+  {
+    "employeeNumber": 2,
+    "firstName": "Mark ",
+    "lastName": "Taylor",
+    "email": "mark.taylor@arrkgroup.com",
+    "address": "navi mumbai",
+    "phoneNumber": "02236982365",
+    "filePath": "src\\images\\Screenshot 2023-04-03 161712.png",
+    "fileName": "Screenshot 2023-04-03 161712.png",
+    "gender": "Male",
+    "joiningDate": "1956-05-10",
+    "department": "Admin"
+  },
+  {
+    "employeeNumber": 3,
+    "firstName": "Ross",
+    "lastName": "Taylor",
+    "email": "ross.taylor@arrkgroup.com",
+    "address": "london",
+    "phoneNumber": "022698458789",
+    "filePath": "src\\images\\Screenshot 2023-04-10 173912.png",
+    "fileName": "Screenshot 2023-04-10 173912.png",
+    "gender": "Male",
+    "joiningDate": "1986-06-02",
+    "department": "Admin"
+  },
+  {
+    "employeeNumber": 5,
+    "firstName": "Tom ",
+    "lastName": "C",
+    "email": "romc@gmail.com",
+    "address": "Mumbai",
+    "phoneNumber": "9656552212",
+    "fileName": "",
+    "gender": "Male",
+    "joiningDate": "1991-11-12",
+    "department": "IT"
+  }
+]
