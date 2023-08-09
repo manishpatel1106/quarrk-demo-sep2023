@@ -38,7 +38,7 @@ class App {
         this.app.set("view engine", "ejs");
 
         this.app.use(express.static(path.join(__dirname, "public")));
-        this.app.use(express.static(path.join(__dirname, 'images')));
+        this.app.use(express.static(path.join("src/", 'images')));
     }
 
     // Initialize all the routes of the application
