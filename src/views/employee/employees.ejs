@@ -13,26 +13,56 @@
         <% if(employees.length> 0) { %>
           <div class="row">
             <div class="input-group col-md-4">
-              <input class="form-control py-2" type="search" value="" placeholder="Search" id="example-search-input">
-              <span class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">
+                <!-- <a href="edit-employee?employeeNo=2" class="btn btn-info btn-sm">
                   <i class="fa fa-search"></i>
-                </button>
-              </span>
+                    </a> -->
+                <!-- <button class="btn btn-outline-secondary" type="button">
+                  <i class="fa fa-search"></i>
+                </button> -->
+                <form action="/search" method="get">
+                  <span class="input-group-append">
+                  <input class="form-control py-2" type="search" value="" placeholder="Search" name="searchValue">
+                  <button type="submit" class="btn btn-outline-secondary" value=""><i class="fa fa-search"></i></button>
+                </span>
+              </form>
+              
             </div>
           </div>
           <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Employee ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email Id</th>
-                <th scope="col">Joining Date</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Department</th>
-                <th scope="col">Action</th>
+                <th scope="col" >Employee ID
+                    <a name = "empID" class="headerSortUp" href="sorting?sortField=employeeNumber&&sortType=ASC"></a>
+                    <a class="headerSortDown" href="sorting?sortField=employeeNumber&&sortType=DESC"></a>
+                </th>
+                <th scope="col">First Name
+                  <a class="headerSortUp" href="sorting?sortField=firstName&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=firstName&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Last Name
+                  <a class="headerSortUp" href="sorting?sortField=lastName&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=lastName&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Email Id
+                  <a class="headerSortUp" href="sorting?sortField=email&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=email&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Joining Date
+                  <a class="headerSortUp" href="sorting?sortField=joiningDate&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=joiningDate&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Gender
+                  <a class="headerSortUp" href="sorting?sortField=gender&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=gender&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Department
+                  <a class="headerSortUp" href="sorting?sortField=department&&sortType=ASC"></a>
+                  <a class="headerSortDown" href="sorting?sortField=department&&sortType=DESC"></a>
+                </th>
+                <th scope="col">Action
+                </th>
+              
               </tr>
             </thead>
             <tbody>
@@ -81,5 +111,4 @@
             <% } %>
               <%- include('../partials/pagination') %>
       </main>
-
       <%- include('../partials/footer') %>

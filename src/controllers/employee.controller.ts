@@ -25,12 +25,14 @@ export class EmployeeController {
         if (request.query.page !== undefined) {
             page = parseInt(request.query.page.toString());
         }
+
         employeemodel.getAllEmployees(employees => {
             let totalEmployees = employees.length;
             var skip = (page - 1) * ITEMS_PER_PAGE;
             var limit = ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE;
-
+            
             const pagination: IPagination = {
+
                 currentPage: page,
                 hasNextPage: ITEMS_PER_PAGE * page < totalEmployees,
                 hasPreviousPage: page > 1,
@@ -50,6 +52,7 @@ export class EmployeeController {
     }
 
     getSelectedEmployee = (request: express.Request, response: express.Response) => {
+        console.log("getSelectedEmployee method call")
         employeemodel.getSelectedEmployee(parseInt(request.query.employeeNo.toString()), selectedEmp => {
             response.render(
                 "employee/edit-employee",
@@ -113,7 +116,7 @@ export class EmployeeController {
             joiningDate: request.body.joiningDate,
             department: request.body.department
         };
-        employeemodel.editEmployee(employee);
+        employeemodel.editEmployee(employee,request.body.firstName,request.body.lastName);
         response.redirect('/employees');
     }
 
@@ -129,4 +132,91 @@ export class EmployeeController {
             response.status(404).send("Employee not found");
         }
     }
+
+    searchData(request: express.Request, response: express.Response): void {
+        //Template Literal Types 
+        type methodName = "Search Data";
+        type methodLog = `Method Name :-  ${methodName}`;
+        var methodDetail: methodLog;
+        console.log(methodDetail);
+        var searchItem = '';
+        if(request.query.searchValue)
+        {
+            searchItem = request.query.searchValue.toString();
+        }
+        console.log("search data :-" + searchItem); 
+        var page: number = 1;
+        if (request.query.page !== undefined) {
+            page = parseInt(request.query.page.toString());
+        }
+        employeemodel.getAllEmployees(employees => {
+            const employeeFilterData =   
+            employees.filter((obj) => obj.employeeNumber.toString().trim().toLowerCase().indexOf(searchItem.trim().toLowerCase()) != -1 
+            || obj.firstName.trim().toLowerCase().indexOf(searchItem.trim().toLowerCase()) != -1 
+            || obj.lastName.trim().toLowerCase().indexOf(searchItem.trim().toLowerCase()) != -1 
+            || obj.department.trim().toLowerCase().indexOf(searchItem.trim().toLowerCase()) != -1
+            || obj.gender.trim().toLowerCase().indexOf(searchItem.trim().toLowerCase()) != -1);
+            let totalEmployees = employeeFilterData.length;
+            var skip = (page - 1) * ITEMS_PER_PAGE;
+            var limit = ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE;
+
+            const pagination: IPagination = {
+                currentPage: page,
+                hasNextPage: ITEMS_PER_PAGE * page < totalEmployees,
+                hasPreviousPage: page > 1,
+                nextPage: page + 1,
+                previousPage: page - 1,
+                lastPage: Math.ceil(totalEmployees / ITEMS_PER_PAGE),
+                totalEmployees: employeeFilterData.length
+            };
+            response.render(
+                "employee/employees",
+                {
+                    employees: employeeFilterData.slice(skip, limit),
+                    pagination: pagination
+                }
+            )
+        })
+    }
+
+    sortData(request: express.Request, response: express.Response): void {
+        //Template Literal Types 
+        type methodName = "Sort Data";
+        type methodLog = `Method Name :-  ${methodName}`;
+        var methodDetail: methodLog;
+        console.log(methodDetail);
+        var sortFieldName =null;
+        var sortType =null;
+        sortFieldName = request.query.sortField.toString();
+        sortType= request.query.sortType.toString();
+
+        var page: number = 1;
+        if (request.query.page !== undefined) {
+            page = parseInt(request.query.page.toString());
+        }
+        employeemodel.sortByProperty(sortFieldName,sortType, employeeSortedData => {
+            let totalEmployees = employeeSortedData.length;
+            var skip = (page - 1) * ITEMS_PER_PAGE;
+            var limit = ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE;
+
+            const pagination: IPagination = {
+                currentPage: page,
+                hasNextPage: ITEMS_PER_PAGE * page < totalEmployees,
+                hasPreviousPage: page > 1,
+                nextPage: page + 1,
+                previousPage: page - 1,
+                lastPage: Math.ceil(totalEmployees / ITEMS_PER_PAGE),
+                totalEmployees: employeeSortedData.length
+            };
+            response.render(
+                "employee/employees",
+                {
+                    employees: employeeSortedData.slice(skip, limit),
+                    pagination: pagination
+                }
+            )
+       })
+    }
+
+    
 }
