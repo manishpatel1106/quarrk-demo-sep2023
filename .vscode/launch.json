@@ -5,24 +5,43 @@
     "version": "0.2.0",
     "configurations": [
         {
+
             "type": "pwa-node",
+
             "request": "launch",
+
             "name": "Launch Program",
+
             "skipFiles": [
+
                 "<node_internals>/**"
+
             ],
-            "program": "${workspaceFolder}\\dist\\index.js",
+
+            "program": "${workspaceFolder}\\dist\\server.js",
+
             "preLaunchTask": "tsc: build - tsconfig.json",
+
             "outFiles": [
+
                 "${workspaceFolder}/dist/**/*.js"
+
             ]
+
         },
+
         {
+
             "name": "Attach",
+
             "type": "node",
+
             "request": "attach",
+
             "address": "localhost",
+
             "port": 8080
+
         }
     ]
 }

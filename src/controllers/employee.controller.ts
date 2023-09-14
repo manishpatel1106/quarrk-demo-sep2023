@@ -93,7 +93,9 @@ export class EmployeeController {
     }
 
     editEmployee = (request: express.Request, response: express.Response) => {
-        let file_path, file_name = "";
+        // Typeof Type Operator
+        let file_path = "";
+        let file_name : typeof file_path;
 
         if (request.file !== undefined) {
             file_path = request.file.path;
@@ -134,11 +136,6 @@ export class EmployeeController {
     }
 
     searchData(request: express.Request, response: express.Response): void {
-        //Template Literal Types 
-        type methodName = "Search Data";
-        type methodLog = `Method Name :-  ${methodName}`;
-        var methodDetail: methodLog;
-        console.log(methodDetail);
         var searchItem = '';
         if(request.query.searchValue)
         {
@@ -185,8 +182,11 @@ export class EmployeeController {
         type methodLog = `Method Name :-  ${methodName}`;
         var methodDetail: methodLog;
         console.log(methodDetail);
+
+        // Typeof Type Operator
         var sortFieldName =null;
-        var sortType =null;
+        var sortType : typeof sortFieldName;
+
         sortFieldName = request.query.sortField.toString();
         sortType= request.query.sortType.toString();
 

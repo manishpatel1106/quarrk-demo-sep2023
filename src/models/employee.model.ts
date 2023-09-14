@@ -40,6 +40,7 @@ export class EmployeeModel {
 
     // edit employee from database [Rest Parameter]
     editEmployee(updatedEmployee: Employee,...empData: string[]) {
+        console.log('[Rest Parameter]' + empData);
         this.getAllEmployees(employees => {
             for (var i = 0; i < employees.length; i++) {
                 if (employees[i].employeeNumber === updatedEmployee.employeeNumber) {
